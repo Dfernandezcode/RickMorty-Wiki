@@ -1,0 +1,50 @@
+.nav {
+	display: flex;
+	flex-direction: column;
+	margin-top: 20px;
+
+	@include adaptTo('desktop-only') {
+		flex-direction: row;
+		background-color: $bg-4;
+		width: 100vw;
+		height: 300px;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__link {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		text-decoration: none;
+		font-size: 24px;
+		font-weight: 700;
+
+		color: $text-3;
+		background-color: $bg-3;
+
+		width: 280px;
+		height: 150px;
+		border-radius: 200px;
+
+		margin: 20px;
+
+		@include adaptTo('tablet') {
+			font-size: 32px;
+			width: 500px;
+		}
+		@include adaptTo('deskttop-m') {
+			font-size: 24px;
+			width: 280px;
+		}
+		@include adaptTo('deskttop-l') {
+			font-size: 32px;
+			width: 350px;
+		}
+		@include adaptTo('deskttop-xl') {
+			font-size: 32px;
+			width: 350px;
+		}
+	}
+}

@@ -1,0 +1,32 @@
+.main {
+	display: flex;
+	justify-content: center;
+}
+
+.section-home {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+
+	font-size: 16px;
+	color: $text-4;
+
+	margin: 45px 20px;
+
+	@include adaptTo('not-mobile') {
+		font-size: 20px;
+		max-width: 400px;
+	}
+
+	&__line {
+		width: 125px;
+		border: solid 1px $text-2;
+		margin: 20px;
+
+		@include adaptTo('desktop-only') {
+			border: solid 2px $text-2;
+		}
+	}
+}

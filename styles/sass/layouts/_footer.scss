@@ -1,0 +1,62 @@
+.footer {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+
+	background-color: $bg-2;
+	border-bottom: 20px solid $text-3;
+	padding: 40px;
+
+	@include adaptTo('not-mobile') {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	@include adaptTo('desktop-only') {
+		border-bottom: none;
+	}
+
+	&__container {
+		color: $text-2;
+		text-align: center;
+		width: fit-content;
+
+		&--homelink {
+			text-decoration: none;
+		}
+
+		&--title {
+			/* Increase this as per requirement */
+			padding-bottom: 1px;
+			border-bottom: solid 1px $text-2;
+		}
+
+		&--subtitle {
+			font-weight: 700;
+		}
+	}
+
+	&__nav {
+		display: flex;
+		flex-direction: column;
+		margin: 30px;
+		text-align: center;
+		@include adaptTo('not-mobile') {
+			flex-direction: row;
+		}
+
+		&--link {
+			text-decoration: none;
+			color: $text-2;
+
+			@include adaptTo('not-mobile') {
+				margin: 0 15px;
+			}
+		}
+
+		&--link:hover {
+			padding-bottom: 1px;
+			border-bottom: solid 1px $text-2;
+		}
+	}
+}
