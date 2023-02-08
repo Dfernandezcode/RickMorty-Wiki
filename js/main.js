@@ -8,25 +8,25 @@ window.onload = () => {
 const printPage = (section, url) => {
 	adaptHeader(section);
 
-	console.log(section);
-	console.log(url);
-
 	switch (section) {
 		case 'HOME':
 			printHome();
 			break;
+
 		case 'CHARACTERS':
 			console.log('print characters');
 			url ? printCharacterDetails(url) : printCharacters();
 			printCharacters();
 			break;
+
 		case 'SEASONS':
 			console.log('print seasons');
 			printSeasons();
 			break;
+
 		case 'LOCATION':
 			console.log('print location');
-			printLocation();
+			printLocations();
 			break;
 	}
 };

@@ -173,6 +173,217 @@ span {
   flex-wrap: wrap;
 }
 
+.card__title {
+  display: flex;
+  justify-content: space-between;
+}
+.card__title--name {
+  color: #471d4f;
+  font-size: 14px;
+  font-weight: 700;
+}
+@media screen and (min-width: 768px) {
+  .card__title--name {
+    font-size: 18px;
+  }
+}
+.card__title--status {
+  color: #fff;
+  font-size: 10px;
+  width: fit-content;
+  text-align: center;
+  padding: 5px 10px;
+  background-color: #81ce7f;
+}
+@media screen and (min-width: 768px) {
+  .card__title--status {
+    font-size: 14px;
+  }
+}
+.card__box {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.card__box--img {
+  width: 180px;
+}
+.card__box-info {
+  width: 180px;
+}
+.card__box-info--title {
+  font-size: 10px;
+  color: #8f8f8f;
+}
+@media screen and (min-width: 768px) {
+  .card__box-info--title {
+    font-size: 12px;
+  }
+}
+.card__box-info--info {
+  font-size: 14px;
+  color: #000;
+}
+@media screen and (min-width: 768px) {
+  .card__box-info--info {
+    font-size: 16px;
+  }
+}
+.card__link {
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 50px;
+  background-color: #eee4f1;
+  text-align: center;
+  margin: 10px 5px;
+}
+@media screen and (min-width: 768px) {
+  .card__link {
+    font-size: 16px;
+  }
+}
+
+.card__location-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 300;
+  color: #471d4f;
+  background-color: #f3f3f3;
+  border-radius: 20px;
+  height: 50px;
+  text-align: center;
+}
+.card__container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  height: fit-content;
+  margin: 20px 40px;
+}
+.card__container__row {
+  margin: auto 40px;
+  float: left;
+  height: 30px;
+  width: 1px; /* edit this if you want */
+  background-color: #8f8f8f;
+}
+.card__container__box--title {
+  font-size: 10px;
+  color: #8f8f8f;
+  font-weight: 700;
+}
+.card__container__box--info {
+  font-size: 14px;
+  color: #000;
+}
+
+.card {
+  width: 280px;
+}
+.card__season-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background-color: #f3f3f3;
+  color: #471d4f;
+  font-size: 18px;
+  height: 50px;
+}
+.card__date-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+.card__date-container--title {
+  font-size: 10px;
+  color: #8f8f8f;
+  font-weight: 700;
+}
+.card__date-container--date {
+  font-size: 14px;
+  color: #000;
+}
+.card__episode-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.card__episode-container--title {
+  font-size: 10px;
+  color: #8f8f8f;
+  font-weight: 700;
+}
+.card__episode-container--ep {
+  width: 280px;
+  color: #471d4f;
+  font-size: 12px;
+  font-weight: 700;
+  background-color: #bea1c7;
+  border-radius: 20px;
+  text-align: center;
+  margin: 10px;
+}
+
+.section-header {
+  font-size: 14px;
+  font-weight: 700;
+  color: #471d4f;
+  width: 100%;
+  text-align: center;
+  background-color: #bea1c7;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (min-width: 768px) {
+  .section-header {
+    font-size: 18px;
+    height: 45px;
+  }
+}
+
+.section-search {
+  font-size: 14px;
+  box-shadow: 3px 11px 2px -6px rgb(130, 130, 130);
+  border: none;
+  font-weight: 700;
+  color: #471d4f;
+  width: 300px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 20px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px;
+  padding-left: 40px;
+  text-align: left;
+}
+@media screen and (min-width: 768px) {
+  .section-search {
+    width: 700px;
+  }
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+  max-width: 1440px;
+}
+@media screen and (min-width: 768px) {
+  .section {
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+}
+
 .footer {
   display: flex;
   align-items: center;
@@ -301,37 +512,7 @@ span {
   }
 }
 
-.section-header {
-  font-size: 14px;
-  font-weight: 700;
-  color: #471d4f;
-  width: 100%;
-  text-align: center;
-  background-color: #bea1c7;
-  height: 35px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-@media screen and (min-width: 768px) {
-  .section-header {
-    font-size: 18px;
-    height: 45px;
-  }
-}
-
-.section {
-  display: flex;
-  justify-content: center;
-  max-width: 1440px;
-}
-@media screen and (min-width: 768px) {
-  .section {
-    flex-wrap: wrap;
-    flex-direction: row;
-  }
-}
-.section .card {
+.card {
   display: flex;
   flex-direction: column;
   width: 380px;
@@ -342,73 +523,17 @@ span {
   padding: 15px;
 }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-  .section .card {
-    width: 45%;
+  .card {
+    min-width: 350px;
   }
 }
 @media screen and (min-width: 1024px) {
-  .section .card {
-    width: 30%;
+  .card {
+    min-width: 350px;
     max-width: 400px;
   }
 }
-.section .card__title {
-  display: flex;
-  justify-content: space-between;
-}
-.section .card__title--name {
-  color: #471d4f;
-  font-size: 14px;
-  font-weight: 700;
-}
-@media screen and (min-width: 768px) {
-  .section .card__title--name {
-    font-size: 18px;
-  }
-}
-.section .card__title--status {
-  color: #fff;
-  font-size: 10px;
-  width: fit-content;
-  text-align: center;
-  padding: 5px 10px;
-  background-color: #81ce7f;
-}
-@media screen and (min-width: 768px) {
-  .section .card__title--status {
-    font-size: 14px;
-  }
-}
-.section .card__box {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-.section .card__box--img {
-  width: 180px;
-}
-.section .card__box-info {
-  width: 180px;
-}
-.section .card__box-info--title {
-  font-size: 10px;
-  color: #8f8f8f;
-}
-@media screen and (min-width: 768px) {
-  .section .card__box-info--title {
-    font-size: 12px;
-  }
-}
-.section .card__box-info--info {
-  font-size: 14px;
-  color: #000;
-}
-@media screen and (min-width: 768px) {
-  .section .card__box-info--info {
-    font-size: 16px;
-  }
-}
-.section .card__link {
+.card__link {
   font-size: 12px;
   font-weight: 700;
   border-radius: 50px;
@@ -417,7 +542,7 @@ span {
   margin: 10px 5px;
 }
 @media screen and (min-width: 768px) {
-  .section .card__link {
+  .card__link {
     font-size: 16px;
   }
 }/*# sourceMappingURL=styles.css.map */

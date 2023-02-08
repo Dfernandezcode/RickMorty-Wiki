@@ -1,0 +1,43 @@
+.card {
+	&__location-title {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 18px;
+		font-weight: 300;
+		color: $text-3;
+		background-color: $bg-2;
+		border-radius: 20px;
+		height: 50px;
+		text-align: center;
+	}
+
+	&__container {
+		display: flex;
+		justify-content: center;
+		text-align: center;
+		height: fit-content;
+		margin: 20px 40px;
+
+		&__row {
+			margin: auto 40px;
+			float: left;
+			height: 30px;
+			width: 1px; /* edit this if you want */
+			background-color: $text-2;
+		}
+
+		&__box {
+			&--title {
+				font-size: 10px;
+				color: $text-2;
+				font-weight: 700;
+			}
+
+			&--info {
+				font-size: 14px;
+				color: $text-4;
+			}
+		}
+	}
+}

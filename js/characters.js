@@ -3,24 +3,24 @@
 printCharacters = () => {
 	mainContainer.innerHTML = '';
 	getCharacters().then((response) => {
-		console.log(response);
 		let characterCards = formatCharacterCards(response);
 		mainContainer.innerHTML = `
 		<h3 class = "section-header">CHARACTER FINDER</h3>
-		
+		<input class="section-search" type="text" placeholder="Search..">
         
 		<section class="section">
                 ${characterCards}
         </section>
         `;
 
-		//addEventsToCharacterLinks(response);
+		addEventsToCharacterLinks(response);
 	});
 };
 
 //async function - call character list.
 
 const formatCharacterCards = (characters) => {
+	console.log(characters);
 	let characterTemplate = characters
 		.map((character) => {
 			return `
@@ -52,12 +52,26 @@ const formatCharacterCards = (characters) => {
 	return characterTemplate;
 };
 
+const addEventsToCharacterLinks = (characters) => {
+	let cardLinks = [...document.getElementsByClassName('card__link')];
+	cardLinks.forEach((element, i) => {
+		element.addEventListener('click', () => {
+			printPage('CHARACTERS', characters[i].urlDetail);
+		});
+	});
+};
+
 const getCharacters = async () => {
 	let url = URL_BASE + '/character/';
-	let response = await fetch(url);
-	let data = await response.json();
-	data = mapDataCharacters(data.results);
-	return data;
+	let dataAll = [];
+
+	for (let i = 1; i <= 42; i++) {
+		let response = await fetch(`${url}?page=${i}`);
+		let data = await response.json();
+		dataAll = [...dataAll, ...mapDataCharacters(data.results)];
+	}
+
+	return dataAll;
 };
 
 const mapDataCharacters = (data) => {
@@ -70,11 +84,13 @@ const mapDataCharacters = (data) => {
 				'assets/images/characters/' +
 				character.url
 					.replace('https://rickandmortyapi.com/api/character/avatar/', '')
-					.replace('/'),
+					.replace('/', '') +
+				'.jpg',
 			species: character.species,
 			gender: character.gender,
 			origin: character.origin,
 			location: character.location,
+			urlDetail: character.url,
 		};
 
 		return object;
