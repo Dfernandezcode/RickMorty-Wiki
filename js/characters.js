@@ -6,7 +6,7 @@ printCharacters = () => {
 		let characterCards = formatCharacterCards(response);
 		mainContainer.innerHTML = `
 		<h3 class = "section-header">CHARACTER FINDER</h3>
-		<input class="section-search" type="text" placeholder="Search..">
+		<input class="section-search" type="text" placeholder="Search...">
         
 		<section class="section">
                 ${characterCards}
@@ -80,12 +80,7 @@ const mapDataCharacters = (data) => {
 			id: character.id,
 			name: character.name,
 			status: character.status,
-			image:
-				'assets/images/characters/' +
-				character.url
-					.replace('https://rickandmortyapi.com/api/character/avatar/', '')
-					.replace('/', '') +
-				'.jpg',
+			image: character.image,
 			species: character.species,
 			gender: character.gender,
 			origin: character.origin,

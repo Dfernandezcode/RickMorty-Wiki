@@ -194,6 +194,7 @@ span {
   text-align: center;
   padding: 5px 10px;
   background-color: #81ce7f;
+  border-radius: 5px;
 }
 @media screen and (min-width: 768px) {
   .card__title--status {
@@ -204,9 +205,13 @@ span {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  margin: 20px 0;
 }
 .card__box--img {
-  width: 180px;
+  width: 130px;
+  border-radius: 5px;
+  box-shadow: -3px 8px 12px -8px rgba(0, 0, 0, 0.25);
+  align-self: first baseline;
 }
 .card__box-info {
   width: 180px;
@@ -257,7 +262,8 @@ span {
 }
 .card__container {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
   text-align: center;
   height: fit-content;
   margin: 20px 40px;
@@ -268,6 +274,7 @@ span {
   height: 30px;
   width: 1px; /* edit this if you want */
   background-color: #8f8f8f;
+  margin: 0 20px;
 }
 .card__container__box--title {
   font-size: 10px;
@@ -365,6 +372,7 @@ span {
   margin: 40px;
   padding-left: 40px;
   text-align: left;
+  outline: none;
 }
 @media screen and (min-width: 768px) {
   .section-search {
@@ -534,12 +542,16 @@ span {
   }
 }
 .card__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 12px;
   font-weight: 700;
   border-radius: 50px;
   background-color: #eee4f1;
   text-align: center;
   margin: 10px 5px;
+  height: 40px;
 }
 @media screen and (min-width: 768px) {
   .card__link {

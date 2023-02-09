@@ -5,7 +5,7 @@ printLocations = () => {
 		let locationCards = formatLocationCards(response);
 		mainContainer.innerHTML = `
 		<h3 class = "section-header">LOCATION FINDER</h3>
-		<input class="section-search" type="text" placeholder="Search..">
+		<input class="section-search" type="text" placeholder="Search...">
 		<section class="section">
                 ${locationCards}
         </section>

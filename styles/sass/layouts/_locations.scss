@@ -14,7 +14,8 @@
 
 	&__container {
 		display: flex;
-		justify-content: center;
+		align-items: center;
+		justify-content: space-around;
 		text-align: center;
 		height: fit-content;
 		margin: 20px 40px;
@@ -25,6 +26,7 @@
 			height: 30px;
 			width: 1px; /* edit this if you want */
 			background-color: $text-2;
+			margin: 0 20px;
 		}
 
 		&__box {

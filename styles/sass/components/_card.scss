@@ -20,12 +20,16 @@
 	}
 
 	&__link {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		font-size: 12px;
 		font-weight: 700;
 		border-radius: 50px;
 		background-color: $bg-3;
 		text-align: center;
 		margin: 10px 5px;
+		height: 40px;
 		@include adaptTo('not-mobile') {
 			font-size: 16px;
 		}
