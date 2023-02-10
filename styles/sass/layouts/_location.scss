@@ -1,0 +1,58 @@
+.location-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	margin: 0 20px;
+
+	&--name {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 20;
+		font-weight: 700;
+		color: $text-3;
+		background-color: $bg-status-unknown;
+		margin-top: 15px;
+		width: 300px;
+		height: 52px;
+		border-radius: 20px;
+	}
+
+	&__details {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin: 50px 0;
+		&--title {
+			font-size: 14px;
+			font-weight: 700;
+			color: $text-2;
+			margin: 5px 0;
+		}
+
+		&--content {
+			background-color: $bg-status-unknown;
+			color: $text-4;
+			width: 270px;
+			height: 30px;
+			border-radius: 0 20px 20px 0;
+			font-size: 18px;
+			padding-left: 10px;
+		}
+	}
+
+	&__box {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		width: 300px;
+		margin: 15px;
+
+		&--residents {
+			border-radius: 100px;
+			width: 90px;
+		}
+	}
+}

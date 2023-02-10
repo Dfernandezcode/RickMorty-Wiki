@@ -64,6 +64,22 @@ const addEventsToCharacterLinks = (characters) => {
 const getCharacters = async () => {
 	let url = URL_BASE + '/character/';
 	let dataAllChar = [];
+	let i = 1;
+
+	do {
+		let response = await fetch(`${url}?page=${i}`);
+		let data = await response.json();
+		dataAllChar = [...dataAllChar, ...mapDataCharacters(data.results)];
+		i++;
+	} while (i <= null);
+
+	return dataAllChar;
+};
+
+/*
+const getCharacters = async () => {
+	let url = URL_BASE + '/character/';
+	let dataAllChar = [];
 
 	for (let i = 1; i <= 20; i++) {
 		let response = await fetch(`${url}?page=${i}`);
@@ -73,6 +89,7 @@ const getCharacters = async () => {
 
 	return dataAllChar;
 };
+*/
 
 const mapDataCharacters = (data) => {
 	let dataMapped = data.map((character) => {

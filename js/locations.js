@@ -1,6 +1,5 @@
 printLocations = () => {
 	getLocations().then((response) => {
-		console.log(response);
 		let locationCards = formatLocationCards(response);
 		mainContainer.innerHTML = `
 		<section class="section">
@@ -57,7 +56,8 @@ const addEventsToLocationLinks = (location) => {
 	let cardLinks = [...document.getElementsByClassName('card__link')];
 	cardLinks.forEach((element, i) => {
 		element.addEventListener('click', () => {
-			printPage('LOCATION', location[i].urlDetail);
+			console.log(location[i]);
+			printPage('LOCATION', location[i].url);
 		});
 	});
 };
@@ -66,7 +66,7 @@ const getLocations = async () => {
 	let url = URL_BASE + '/location/';
 	let dataAllLoc = [];
 
-	for (let i = 1; i <= 15; i++) {
+	for (let i = 1; i <= 7; i++) {
 		let response = await fetch(`${url}?page=${i}`);
 		let data = await response.json();
 		dataAllLoc = [...dataAllLoc, ...mapDataLocations(data.results)];
@@ -76,11 +76,13 @@ const getLocations = async () => {
 };
 
 const mapDataLocations = (data) => {
+	console.log(data);
 	let dataMapped = data.map((location) => {
 		let object = {
 			name: location.name,
 			type: location.type,
 			dimension: location.dimension,
+			url: location.url,
 		};
 
 		return object;

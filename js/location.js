@@ -9,6 +9,9 @@ const printDetailLocation = (url) => {
 				</section>
 			</section>
 		`;
+
+		addEventListenerToOptions('residents', response.residents);
+		console.log(response);
 	});
 };
 
@@ -25,28 +28,31 @@ const formatDataLocation = (data) => {
 		name: data.name.toUpperCase(),
 		type: data.type,
 		dimension: data.dimension,
-		residents: data.residents,
+		residents: mapOptions(data.residents, 'residents'),
 	};
 
 	return dataFormatted;
 };
 
-const formatLocationDetail = (data) => {
+const formatLocationDetail = (location) => {
+	console.log(location.residents);
+	let residents = formatOptions('residents', location.residents);
+
 	return `
 		<div class="location-container">	
-			<h3 class="location-container--name">${data.name}</h3>
+			<h3 class="location-container--name">${location.name}</h3>
 		</div>
 			
 		<div class="location-container__details">
 					<h6 class="location-container__details--title">TYPE</h6>
-					<p class="location-container__details--content">${data.type}</p>
+					<p class="location-container__details--content">${location.type}</p>
 					
 					<h6 class="location-container__details--title">DIMENSION</h6>
-					<p class="location-container__details--content">${data.dimension}</p>
+					<p class="location-container__details--content">${location.dimension}</p>
 					
 					<h6 class="location-container__details--title">RESIDENTS</h6>
-					<div class="location-container__residents">
-						<img class="location-container__residents--img" src="Resident" alt="Null"> 
+					<div class="location-container__box">
+						${residents}
 					</div>
 		</div>
 	`;
