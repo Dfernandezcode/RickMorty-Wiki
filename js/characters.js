@@ -1,15 +1,15 @@
 //API: https://rickandmortyapi.com/api/character
 
 printCharacters = () => {
-	mainContainer.innerHTML = '';
 	getCharacters().then((response) => {
 		let characterCards = formatCharacterCards(response);
 		mainContainer.innerHTML = `
-		<h3 class = "section-header">CHARACTER FINDER</h3>
-		<input class="section-search" type="text" placeholder="Search...">
-        
 		<section class="section">
+		<h3 class = "section__header">CHARACTER FINDER</h3>
+		<input class="section__search" type="text" placeholder="Search...">
+			<section class="section__container">
                 ${characterCards}
+			</section>
         </section>
         `;
 
@@ -27,7 +27,7 @@ const formatCharacterCards = (characters) => {
         <div class="card">
             <div class="card__title">
                 <h5 class="card__title--name">${character.name}</h5>
-                <p class="card__title--status">${character.status}</p>
+                <p class="card__title--status card__title--${character.status}">${character.status}</p>
             </div>
             
             <div class="card__box">
@@ -63,15 +63,15 @@ const addEventsToCharacterLinks = (characters) => {
 
 const getCharacters = async () => {
 	let url = URL_BASE + '/character/';
-	let dataAll = [];
+	let dataAllChar = [];
 
-	for (let i = 1; i <= 42; i++) {
+	for (let i = 1; i <= 20; i++) {
 		let response = await fetch(`${url}?page=${i}`);
 		let data = await response.json();
-		dataAll = [...dataAll, ...mapDataCharacters(data.results)];
+		dataAllChar = [...dataAllChar, ...mapDataCharacters(data.results)];
 	}
 
-	return dataAll;
+	return dataAllChar;
 };
 
 const mapDataCharacters = (data) => {

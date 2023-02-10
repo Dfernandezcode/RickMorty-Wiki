@@ -1,0 +1,119 @@
+.character-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+
+	&__avatar {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin: 40px;
+
+		&--img {
+			border: solid 4px $bg-5;
+			border-radius: 100px;
+			width: 200px;
+		}
+		&--name {
+			font-size: 20;
+			font-weight: 700;
+			color: $text-3;
+			border-bottom: solid 1px $text-3;
+			margin-top: 15px;
+		}
+	}
+
+	&__status {
+		display: flex;
+		justify-content: space-between;
+		color: $text-4;
+		font-size: 14px;
+
+		&--alive {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			background-color: $bg-status-alive;
+			border-radius: 20px;
+			height: 30px;
+			width: 75px;
+			margin: 0 10px 15px 0;
+		}
+		&--dead {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			background-color: $bg-status-dead;
+			border-radius: 20px;
+			height: 30px;
+			width: 75px;
+			margin: 0 10px 15px 0;
+		}
+
+		&--unknown {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			background-color: $bg-status-unknown;
+			border-radius: 20px;
+			height: 30px;
+			width: 100px;
+			margin: 0 10px 15px 0;
+		}
+	}
+
+	&__details {
+		display: flex;
+		flex-direction: column;
+		text-align: left;
+
+		&--title {
+			font-size: 14px;
+			font-weight: 700;
+			color: $text-2;
+			margin: 5px 0;
+		}
+
+		&--content {
+			background-color: $bg-status-unknown;
+			color: $text-4;
+			width: 270px;
+			height: 30px;
+			border-radius: 0 20px 20px 0;
+			font-size: 18px;
+			padding-left: 10px;
+		}
+
+		&--content-location {
+			background-color: $bg-3;
+			color: $text-3;
+			width: 270px;
+			height: 30px;
+			border-radius: 20px;
+			font-size: 18px;
+			padding-left: 10px;
+			margin-bottom: 20px;
+		}
+	}
+	&__episode {
+		display: flex;
+		flex-wrap: wrap;
+		width: 250px;
+
+		&--box {
+			background-color: $bg-3;
+			text-align: center;
+			color: $text-3;
+			border-radius: 20px;
+			font-size: 18px;
+			width: 50px;
+			height: 30px;
+			margin: 10px 10px 10px 0;
+		}
+	}
+}

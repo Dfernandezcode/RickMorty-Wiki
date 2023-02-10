@@ -4,13 +4,11 @@
   font-family: "Poppins";
   src: url("../../../assets/fonts/Poppins-Bold.ttf");
   font-weight: 700;
-  font-style: bold;
 }
 @font-face {
   font-family: "Poppins";
   src: url("../../../assets/fonts/Poppins-Light.ttf");
   font-weight: 300;
-  font-style: thin;
 }
 /* 
 RESET SHEET - Josh W. Comeau
@@ -193,13 +191,21 @@ span {
   width: fit-content;
   text-align: center;
   padding: 5px 10px;
-  background-color: #81ce7f;
   border-radius: 5px;
 }
 @media screen and (min-width: 768px) {
   .card__title--status {
     font-size: 14px;
   }
+}
+.card__title--Alive {
+  background-color: #81ce7f;
+}
+.card__title--Dead {
+  background-color: #d85252;
+}
+.card__title--unknown {
+  background-color: #8f8f8f;
 }
 .card__box {
   display: flex;
@@ -246,6 +252,116 @@ span {
   .card__link {
     font-size: 16px;
   }
+}
+
+.character-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.character-container__avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 40px;
+}
+.character-container__avatar--img {
+  border: solid 4px #bea1c7;
+  border-radius: 100px;
+  width: 200px;
+}
+.character-container__avatar--name {
+  font-size: 20;
+  font-weight: 700;
+  color: #471d4f;
+  border-bottom: solid 1px #471d4f;
+  margin-top: 15px;
+}
+.character-container__status {
+  display: flex;
+  justify-content: space-between;
+  color: #000;
+  font-size: 14px;
+}
+.character-container__status--alive {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #81ce7f;
+  border-radius: 20px;
+  height: 30px;
+  width: 75px;
+  margin: 0 10px 15px 0;
+}
+.character-container__status--dead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #d85252;
+  border-radius: 20px;
+  height: 30px;
+  width: 75px;
+  margin: 0 10px 15px 0;
+}
+.character-container__status--unknown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #f2f2f2;
+  border-radius: 20px;
+  height: 30px;
+  width: 100px;
+  margin: 0 10px 15px 0;
+}
+.character-container__details {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.character-container__details--title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #8f8f8f;
+  margin: 5px 0;
+}
+.character-container__details--content {
+  background-color: #f2f2f2;
+  color: #000;
+  width: 270px;
+  height: 30px;
+  border-radius: 0 20px 20px 0;
+  font-size: 18px;
+  padding-left: 10px;
+}
+.character-container__details--content-location {
+  background-color: #eee4f1;
+  color: #471d4f;
+  width: 270px;
+  height: 30px;
+  border-radius: 20px;
+  font-size: 18px;
+  padding-left: 10px;
+  margin-bottom: 20px;
+}
+.character-container__episode {
+  display: flex;
+  flex-wrap: wrap;
+  width: 250px;
+}
+.character-container__episode--box {
+  background-color: #eee4f1;
+  text-align: center;
+  color: #471d4f;
+  border-radius: 20px;
+  font-size: 18px;
+  width: 50px;
+  height: 30px;
+  margin: 10px 10px 10px 0;
 }
 
 .card__location-title {
@@ -336,7 +452,19 @@ span {
   margin: 10px;
 }
 
-.section-header {
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+@media screen and (min-width: 768px) {
+  .section {
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+}
+.section__header {
   font-size: 14px;
   font-weight: 700;
   color: #471d4f;
@@ -349,13 +477,12 @@ span {
   justify-content: center;
 }
 @media screen and (min-width: 768px) {
-  .section-header {
+  .section__header {
     font-size: 18px;
     height: 45px;
   }
 }
-
-.section-search {
+.section__search {
   font-size: 14px;
   box-shadow: 3px 11px 2px -6px rgb(130, 130, 130);
   border: none;
@@ -375,27 +502,21 @@ span {
   outline: none;
 }
 @media screen and (min-width: 768px) {
-  .section-search {
+  .section__search {
     width: 700px;
   }
 }
-
-.section {
+.section__container {
   display: flex;
   justify-content: center;
-  max-width: 1440px;
-}
-@media screen and (min-width: 768px) {
-  .section {
-    flex-wrap: wrap;
-    flex-direction: row;
-  }
+  flex-wrap: wrap;
 }
 
 .footer {
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: end;
   background-color: #f3f3f3;
   border-bottom: 20px solid #471d4f;
   padding: 40px;

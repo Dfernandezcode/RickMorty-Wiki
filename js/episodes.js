@@ -4,8 +4,11 @@ printSeasons = () => {
 		console.log(response);
 		let episodeCards = formatEpisodeCards(response);
 		mainContainer.innerHTML = `
-		<h3 class = "section-header">EPISODES</h3>
+		
 		<section class="section">
+		<h3 class = "section__header">EPISODES</h3>
+			<section class="section__container">
+			
 			<div class="card">
 					<p class="card__season-title">Season 1</p>
 				
@@ -42,6 +45,7 @@ printSeasons = () => {
                 ${episodeCards}
 				</div>
 			</div>
+			</section>
         </section>
         `;
 

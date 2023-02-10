@@ -8,6 +8,9 @@ window.onload = () => {
 const printPage = (section, url) => {
 	adaptHeader(section);
 
+	console.log(section);
+	console.log(url);
+
 	switch (section) {
 		case 'HOME':
 			printHome();
@@ -15,8 +18,7 @@ const printPage = (section, url) => {
 
 		case 'CHARACTERS':
 			console.log('print characters');
-			url ? printCharacterDetails(url) : printCharacters();
-			printCharacters();
+			url ? printDetailCharacter(url) : printCharacters();
 			break;
 
 		case 'SEASONS':
@@ -25,8 +27,7 @@ const printPage = (section, url) => {
 			break;
 
 		case 'LOCATION':
-			console.log('print location');
-			printLocations();
+			url ? printDetailLocation(url) : printLocations();
 			break;
 	}
 };
@@ -39,6 +40,4 @@ const adaptHeader = (section) => {
 	} else {
 		header.classList.remove('header--home');
 	}
-
-	console.log(header);
 };

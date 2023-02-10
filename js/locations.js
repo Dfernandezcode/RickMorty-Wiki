@@ -1,17 +1,18 @@
 printLocations = () => {
-	mainContainer.innerHTML = '';
 	getLocations().then((response) => {
 		console.log(response);
 		let locationCards = formatLocationCards(response);
 		mainContainer.innerHTML = `
-		<h3 class = "section-header">LOCATION FINDER</h3>
-		<input class="section-search" type="text" placeholder="Search...">
 		<section class="section">
+		<h3 class = "section__header">LOCATION FINDER</h3>
+		<input class="section__search" type="text" placeholder="Search...">
+			<section class="section__container">
                 ${locationCards}
+			</section>
         </section>
         `;
 
-		//addEventsToLocationLinks(response);
+		addEventsToLocationLinks(response);
 	});
 };
 
@@ -52,12 +53,26 @@ const formatLocationCards = (locations) => {
 	return locationTemplate;
 };
 
+const addEventsToLocationLinks = (location) => {
+	let cardLinks = [...document.getElementsByClassName('card__link')];
+	cardLinks.forEach((element, i) => {
+		element.addEventListener('click', () => {
+			printPage('LOCATION', location[i].urlDetail);
+		});
+	});
+};
+
 const getLocations = async () => {
 	let url = URL_BASE + '/location/';
-	let response = await fetch(url);
-	let data = await response.json();
-	data = mapDataLocations(data.results);
-	return data;
+	let dataAllLoc = [];
+
+	for (let i = 1; i <= 15; i++) {
+		let response = await fetch(`${url}?page=${i}`);
+		let data = await response.json();
+		dataAllLoc = [...dataAllLoc, ...mapDataLocations(data.results)];
+	}
+
+	return dataAllLoc;
 };
 
 const mapDataLocations = (data) => {
