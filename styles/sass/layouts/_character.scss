@@ -82,30 +82,33 @@
 		&--content {
 			background-color: $bg-status-unknown;
 			color: $text-4;
-			width: 270px;
-			height: 30px;
+			width: fit-content;
+			height: fit-content;
 			border-radius: 0 20px 20px 0;
 			font-size: 18px;
-			padding-left: 10px;
+			padding: 5px 10px;
 		}
 
 		&--content-location {
 			background-color: $bg-3;
 			color: $text-3;
-			width: 270px;
-			height: 30px;
+			width: fit-content;
+			height: fit-content;
 			border-radius: 20px;
 			font-size: 18px;
-			padding-left: 10px;
+			padding: 5px 10px;
 			margin-bottom: 20px;
 		}
 	}
 	&__episode {
 		display: flex;
+		align-items: center;
+		justify-content: center;
 		flex-wrap: wrap;
 		width: 250px;
+		margin-bottom: 50px;
 
-		&--box {
+		&--number {
 			background-color: $bg-3;
 			text-align: center;
 			color: $text-3;

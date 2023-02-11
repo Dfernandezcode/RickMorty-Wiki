@@ -49,7 +49,7 @@ printSeasons = () => {
         </section>
         `;
 
-		//addEventsToLocationLinks(response);
+		addEventsToEpisodeLinks(response);
 	});
 };
 
@@ -59,12 +59,23 @@ const formatEpisodeCards = (episodes) => {
 	let episodeTemplate = episodes
 		.map((episode) => {
 			return `
-				<p class="card__episode-container--ep">${episode.name}</p> 
+				<a class="card__episode-container--ep" href="#">${episode.name}</a> 
     `;
 		})
 		.join('');
 
 	return episodeTemplate;
+};
+
+const addEventsToEpisodeLinks = (episodes) => {
+	let epLinks = [
+		...document.getElementsByClassName('card__episode-container--ep'),
+	];
+	epLinks.forEach((element, i) => {
+		element.addEventListener('click', () => {
+			printPage('SEASONS', episodes[i].urlDetail);
+		});
+	});
 };
 
 const getSeasons = async () => {
@@ -80,6 +91,7 @@ const mapDataEpisodes = (data) => {
 		let object = {
 			date: episode.air_date,
 			name: episode.name,
+			urlDetail: episode.url,
 		};
 
 		return object;

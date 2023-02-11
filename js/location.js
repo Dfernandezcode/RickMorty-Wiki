@@ -9,9 +9,6 @@ const printDetailLocation = (url) => {
 				</section>
 			</section>
 		`;
-
-		addEventListenerToOptions('residents', response.residents);
-		console.log(response);
 	});
 };
 
@@ -34,9 +31,41 @@ const formatDataLocation = (data) => {
 	return dataFormatted;
 };
 
+const mapOptions = (options, option) => {
+	let optionFormated = [];
+
+	options.forEach((element, i) => {
+		const stringParts = element.split('/');
+		let idOption = stringParts[stringParts.length - 1];
+		console.log(idOption);
+		let auxObject = {
+			urlImg:
+				'https://rickandmortyapi.com/api/character/avatar/' +
+				idOption +
+				'.jpeg',
+
+			urlFetch: element,
+		};
+		optionFormated.push(auxObject);
+	});
+	return optionFormated;
+};
+
+const formatResidents = (option, options) => {
+	let htmlStructure = '';
+	options.forEach((element) => {
+		htmlStructure += `<img class="location-container__box--${option}" src="${element.urlImg}">`;
+	});
+
+	htmlStructure = `
+            ${htmlStructure}
+    `;
+	return htmlStructure;
+};
+
 const formatLocationDetail = (location) => {
 	console.log(location.residents);
-	let residents = formatOptions('residents', location.residents);
+	let residents = formatResidents('residents', location.residents);
 
 	return `
 		<div class="location-container">	

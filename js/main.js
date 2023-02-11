@@ -23,7 +23,7 @@ const printPage = (section, url) => {
 
 		case 'SEASONS':
 			console.log('print seasons');
-			printSeasons();
+			url ? printDetailEpisode(url) : printSeasons();
 			break;
 
 		case 'LOCATION':

@@ -29,13 +29,42 @@ const formatDataCharacter = (data) => {
 		species: data.species,
 		origin: data.origin.name,
 		location: data.location.name,
-		episode: mapOptions(data.episode, 'episode'),
+		episode: mapEpisode(data.episode, 'episode'),
 	};
 
 	return dataFormatted;
 };
 
+const mapEpisode = (options, option) => {
+	let episodeFormated = [];
+
+	options.forEach((element, i) => {
+		const stringParts = element.split('/');
+		let epOption = stringParts[stringParts.length - 1];
+		console.log(epOption);
+		let auxObject = {
+			episodeNumber: epOption,
+
+			urlFetch: element,
+		};
+		episodeFormated.push(auxObject);
+	});
+	return episodeFormated;
+};
+
+const formatOptions = (option, options) => {
+	let htmlStructure = '';
+	console.log(options);
+	options.forEach((element) => {
+		htmlStructure += `
+		<p class="character-container__episode--number">${element.episodeNumber}</p>
+		`;
+	});
+	return htmlStructure;
+};
+
 const formatCharacterDetail = (data) => {
+	let episode = formatOptions('episode', data.episode);
 	return `
 		<div class="character-container__avatar">	
 				<img class="character-container__avatar--img" src="${data.image}" alt="${data.name}">
@@ -58,7 +87,7 @@ const formatCharacterDetail = (data) => {
 					
 					<h6 class="character-container__details--title">EPISODE</h6>
 					<div class="character-container__episode">
-						
+						${episode}
 					</div>
 			</div>
 			`;
