@@ -61,6 +61,8 @@ const addEventsToCharacterLinks = (characters) => {
 	});
 };
 
+
+
 const getCharacters = async () => {
 	let url = URL_BASE + '/character/';
 	let dataAllChar = [];
