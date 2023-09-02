@@ -1,43 +1,106 @@
+
 const mainContainer = document.querySelector('.main');
-const URL_BASE = 'https://rickandmortyapi.com/api';
+const URL_BASE = "https://rickandmortyapi.com/api";
+let arrayRecent=[];
 
 window.onload = () => {
-	printPage('HOME');
-};
+
+    printPage('HOME');
+    initFooter();
+}
+
+const goBack = ()=>{
+
+    urlLocationsNext=null;
+    urlCharactersNext=null;
+
+    arrayRecent.pop();
+
+    lastDirrection = arrayRecent[arrayRecent.length-1];
+
+    printPage(lastDirrection.section, lastDirrection.url);
+    arrayRecent.pop();
+}
 
 const printPage = (section, url) => {
-	adaptHeader(section);
+   
+    let recentDirection = {section,url};
+    arrayRecent.push(recentDirection);
+  
+    adaptHeader(section);
+    
+    switch (section){
 
-	console.log(section);
-	console.log(url);
+        case 'HOME':
 
-	switch (section) {
-		case 'HOME':
-			printHome();
-			break;
+            urlLocationsNext=null;
+            urlCharactersNext=null;
 
-		case 'CHARACTERS':
-			console.log('print characters');
-			url ? printDetailCharacter(url) : printCharacters();
-			break;
+            printHome();
 
-		case 'SEASONS':
-			console.log('print seasons');
-			url ? printDetailEpisode(url) : printSeasons();
-			break;
+            break;
 
-		case 'LOCATION':
-			url ? printDetailLocation(url) : printLocations();
-			break;
-	}
-};
+        case 'CHARACTERS':
+
+            urlLocationsNext=null;
+
+            if(url===undefined || url===null){
+
+                printCharacters()
+
+            }else printCharacter(url)
+
+            break;
+
+        case 'SEASONS':
+
+            urlLocationsNext=null;
+            urlCharactersNext=null;
+
+            if(url===undefined || url===null){
+
+                printSeasons()
+
+            }else printEpisode(url)
+        
+            break;
+            
+
+        case 'LOCATIONS':
+
+            urlLocationsNext=null;
+
+            if(url===undefined || url===null){
+
+                printLocations()
+
+            }else printLocation(url)
+
+            break;
+
+        default:
+
+            urlLocationsNext=null;
+            urlCharactersNext=null;
+
+            printHome();
+
+            break;
+    }
+
+    window.scrollTo(0,0);
+}
 
 const adaptHeader = (section) => {
-	console.log(section);
-	const header = document.querySelector('header');
-	if (section === 'HOME') {
-		header.classList.add('header--home');
-	} else {
-		header.classList.remove('header--home');
-	}
-};
+
+    const header = document.querySelector('header');
+
+    if(section === 'HOME'){
+
+        header.classList.add('header--home');
+
+    } else {
+
+        header.classList.remove('header--home');
+    }
+}

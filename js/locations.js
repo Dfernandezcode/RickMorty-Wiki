@@ -1,92 +1,16 @@
-printLocations = () => {
-	getLocations().then((response) => {
-		let locationCards = formatLocationCards(response);
-		mainContainer.innerHTML = `
-		<section class="section">
-		<h3 class = "section__header">LOCATION FINDER</h3>
-		<input class="section__search" type="text" placeholder="Search...">
-			<section class="section__container">
-                ${locationCards}
-			</section>
-        </section>
-        `;
 
-		addEventsToLocationLinks(response);
-	});
-};
+let urlLocationsNext;
+let locationsCards;
+let locationsData;
 
-//async function - call Location list.
+const printLocations = () => {
 
-const formatLocationCards = (locations) => {
-	let locationTemplate = locations
-		.map((location) => {
-			return `
-            <div class="card">
-                <p class="card__location-title">${location.name}</p>
-                
-				<div class="card__container">
+    section = 'LOCATIONS';
 
-                    <div class="card__container__box">
-                        <h6 class="card__container__box--title">Type</h6>
-                        <p class="card__container__box--info">${location.type}</p>
-                    </div>    
-
-					<div class="card__container__row">
-
-					</div>
-
-					<div class="card__container__box">
-                        <h6 class="card__container__box--title">Dimension</h6>
-                        <p class="card__container__box--info">${location.dimension}</p>
-                	</div> 
-
-                </div>
-                
-				<a class="card__link" href="#">+ More Details</a>
-            
-			</div>
-    `;
-		})
-		.join('');
-
-	return locationTemplate;
-};
-
-const addEventsToLocationLinks = (location) => {
-	let cardLinks = [...document.getElementsByClassName('card__link')];
-	cardLinks.forEach((element, i) => {
-		element.addEventListener('click', () => {
-			console.log(location[i]);
-			printPage('LOCATION', location[i].url);
-		});
-	});
-};
-
-const getLocations = async () => {
-	let url = URL_BASE + '/location/';
-	let dataAllLoc = [];
-
-	for (let i = 1; i <= 7; i++) {
-		let response = await fetch(`${url}?page=${i}`);
-		let data = await response.json();
-		dataAllLoc = [...dataAllLoc, ...mapDataLocations(data.results)];
-	}
-
-	return dataAllLoc;
-};
-
-const mapDataLocations = (data) => {
-	console.log(data);
-	let dataMapped = data.map((location) => {
-		let object = {
-			name: location.name,
-			type: location.type,
-			dimension: location.dimension,
-			url: location.url,
-		};
-
-		return object;
-	});
-
-	return dataMapped;
-};
+    getData(section).then(response=>{
+        
+        locationsData = response;
+        locationsCards = formatCard(section, locationsData);
+        printContent(section, locationsCards, locationsData);
+    });
+}

@@ -1,88 +1,131 @@
-const printDetailLocation = (url) => {
-	getLocation(url).then((response) => {
-		let locationDetail = formatLocationDetail(response);
-		mainContainer.innerHTML = `
-		<section class="section">
-			<h3 class = "section__header">LOCATION DETAIL</h3>
-				<section class="section-container">
-					${locationDetail}
-				</section>
-			</section>
-		`;
-	});
-};
 
-const getLocation = async (url) => {
-	let response = await fetch(url);
-	let data = await response.json();
-	data = formatDataLocation(data);
+const printLocation = (url)=>{  
 
-	return data;
-};
+    getLocation(url).then(response =>{
 
-const formatDataLocation = (data) => {
-	let dataFormatted = {
-		name: data.name.toUpperCase(),
-		type: data.type,
-		dimension: data.dimension,
-		residents: mapOptions(data.residents, 'residents'),
-	};
+        let locationDetail = formatLocationDetail(response);
+        mainContainer.innerHTML = `
+            <section class="section">
+                <h3 class="section__title">LOCATION DETAIL</h3>
+                <section class="section__container">
+                    ${locationDetail}
+                </section>
+            </section>
 
-	return dataFormatted;
-};
+        `;
+        let buttonResidents = [...document.getElementsByClassName('section__resident')];
+        buttonResidents.forEach((element, i) => {
+            element.addEventListener('click', ()=> moreDetailsResidents(response.urlResidents[i]));
+        }); 
+        
+    const buttonBack = document.querySelector('.header__icon');
+    buttonBack.addEventListener('click', goBack);
+    })
+}
 
-const mapOptions = (options, option) => {
-	let optionFormated = [];
+const moreDetailsResidents = (resident)=>{
 
-	options.forEach((element, i) => {
-		const stringParts = element.split('/');
-		let idOption = stringParts[stringParts.length - 1];
-		console.log(idOption);
-		let auxObject = {
-			urlImg:
-				'https://rickandmortyapi.com/api/character/avatar/' +
-				idOption +
-				'.jpeg',
+    printPage('CHARACTERS', resident)
+}
 
-			urlFetch: element,
-		};
-		optionFormated.push(auxObject);
-	});
-	return optionFormated;
-};
+const getLocation = async(url)=>{
+    
+    let response = await fetch(url);
+    let data = await response.json();
+    dataFormated = formatLocation(data);
+    
+    return dataFormated;
+}
 
-const formatResidents = (option, options) => {
-	let htmlStructure = '';
-	options.forEach((element) => {
-		htmlStructure += `<img class="location-container__box--${option}" src="${element.urlImg}">`;
-	});
+const getNumberResidents = (array)=>{
 
-	htmlStructure = `
-            ${htmlStructure}
-    `;
-	return htmlStructure;
-};
+    let arrayNumberResidents = [] 
+    array.forEach(element => {
+
+        let numberResident = element.replaceAll('https://rickandmortyapi.com/api/character/','');
+        arrayNumberResidents.push(numberResident);
+    });
+
+    return arrayNumberResidents;
+}   
+
+
+const formatLocation = (location)=>{
+
+    let arrayNumberResidents = getNumberResidents(location.residents);
+    let dataFormated = {
+        id:location.id,
+        name:location.name.toUpperCase(),
+        type:location.type,
+        dimension:location.dimension,
+        residents:arrayNumberResidents,
+        urlResidents:location.residents,
+        urlDetail:location.url,
+        created:location.created
+    }
+ 
+    return dataFormated;
+}
+
+const createUrlImgResident = (number)=>{
+
+    let urlImg = `https://rickandmortyapi.com/api/character/avatar/${number}.jpeg`;
+
+    return urlImg;
+}
+
+const  getUrlResidents = (array)=>{
+    let arrayUrlImgResidents = [];
+    array.forEach(element => {
+
+        urlImgResident = createUrlImgResident(element);
+        arrayUrlImgResidents.push(urlImgResident);
+    });
+
+    return arrayUrlImgResidents;
+}
+
+const formatResidents = (array)=>{
+
+    let residentsTemplate = array.map(element=>{
+
+        return `
+            <img class='section__resident' src='${element}'>
+        `
+    }).join('');
+
+    return residentsTemplate;
+}
 
 const formatLocationDetail = (location) => {
-	console.log(location.residents);
-	let residents = formatResidents('residents', location.residents);
+    let arrayUrlImgResidents = getUrlResidents(location.residents); 
+    let residentsTemplate = formatResidents(arrayUrlImgResidents); 
 
-	return `
-		<div class="location-container">	
-			<h3 class="location-container--name">${location.name}</h3>
-		</div>
-			
-		<div class="location-container__details">
-					<h6 class="location-container__details--title">TYPE</h6>
-					<p class="location-container__details--content">${location.type}</p>
-					
-					<h6 class="location-container__details--title">DIMENSION</h6>
-					<p class="location-container__details--content">${location.dimension}</p>
-					
-					<h6 class="location-container__details--title">RESIDENTS</h6>
-					<div class="location-container__box">
-						${residents}
-					</div>
-		</div>
-	`;
-};
+    return `
+    <div class = 'detail detail--location'>
+        <div class = 'detail__header detail__header--location'>
+            <h4 class='detail__name detail__name--location'>${location.name}</h4>
+        </div>
+        <div class='detail__body detail__body--location'>
+            <div class='detail__container detail__container--data'>
+                <div class='detail__type--location'>
+                    <h3 class='detail__text detail__text--location' >TYPE</h3>
+                    <h4 class='detail__data detail__data--location-location'>${location.type}</h4>
+                </div>   
+                <div class='detail__dimension--location'>
+                    <h3 class='detail__text detail__text--location'>DIMENSION</h3>
+                    <h4 class='detail__data detail__data--location-location'>${location.dimension}</h4>
+                </div>
+            </div>
+            
+            <div class='detail__body-container--location'>
+                <h3 class='detail__text detail__text--location'>RESIDENTS</h3>
+                <div class='detail__data detail__data--residentes'>${residentsTemplate}</div>
+            </div>
+        </div>
+    </div>  
+    `;
+
+
+
+}
